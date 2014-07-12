@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Starch::VERSION
   spec.authors       = ["Brian O'Keefe"]
   spec.email         = ['brian@bokstuff.com']
-  spec.summary       = %q{An opinionated skeleton for basic static sites.}
+  spec.summary       = %q{An opinionated skeleton generator for basic static sites.}
   spec.description   = spec.summary
   spec.homepage      = 'https://github.com/brianokeefe/starch'
   spec.license       = 'MIT'
@@ -24,3 +24,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'aruba'
 end
+
