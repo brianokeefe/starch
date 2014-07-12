@@ -1,5 +1,3 @@
-require "starch/version"
+require 'starch/version'
+require 'starch/generator'
 
-module Starch
-  # Your code goes here...
-end
