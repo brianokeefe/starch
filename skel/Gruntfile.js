@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'app',
-          src: ['**/*.html', 'assets/{images,fonts,media}/**/*'],
+          src: ['**/*.html', 'assets/{files,fonts,images}/**/*'],
           dest: 'staging'
         }]
       },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'app',
-          src: ['**/*.html', 'assets/{images,fonts,media}/**/*'],
+          src: ['**/*.html', 'assets/{files,fonts,images}/**/*'],
           dest: 'public_html'
         }]
       }
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
         options: { livereload: true }
       },
       static: {
-        files: ['app/**/*.html', 'app/assets/{images,fonts,media}/**/*'],
+        files: ['app/**/*.html', 'app/assets/{files,fonts,images}/**/*'],
         tasks: ['copy:staging'],
         options: { livereload: true }
       }

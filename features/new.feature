@@ -6,6 +6,9 @@ Feature: scaffolding a site
       | foo |
       | foo/node_modules |
       | foo/app |
+      | foo/app/assets/files |
+      | foo/app/assets/fonts |
+      | foo/app/assets/images |
       | foo/app/assets/js |
       | foo/app/assets/stylesheets |
     And the following files should exist:
