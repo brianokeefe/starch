@@ -85,7 +85,7 @@ generated Gruntfile (or anything else) to meet the requirements of your project.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/starch/fork )
+1. Fork it ( https://github.com/brianokeefe/starch/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
