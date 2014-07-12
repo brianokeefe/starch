@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'starch'
+Starch::Generator.start
+
