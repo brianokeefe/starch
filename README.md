@@ -8,6 +8,7 @@ of your toolchain. Starch gets you:
 * A simple directory structure
 * Barebones `bower.json` and `package.json` files for easily saving bower and
   npm dependencies
+* Templates and partials via Handlebars
 * SASS compilation
 * JS uglification
 * Coffeescript compilation
@@ -31,27 +32,45 @@ To scaffold a new site named `mysite`:
 Starch will create a directory `mysite` within the current directory that looks
 like this:
 
-    mysite
     ├── Gruntfile.js
     ├── app
-    │   └── assets
-    |       ├── files
-    |       ├── fonts
-    |       ├── images
-    │       ├── js
-    │       └── stylesheets
-    │           └── main.scss
+    │   ├── assets
+    │   │   ├── files
+    │   │   ├── fonts
+    │   │   ├── images
+    │   │   ├── js
+    │   │   └── stylesheets
+    │   │       └── main.scss
+    │   ├── pages
+    │   ├── partials
+    │   └── templates
+    │       └── default.hbt
     ├── bower.json
     ├── node_modules
     │   └── ...
     └── package.json
 
-* Your site's HTML can live anywhere in the `app` directory (preferably outside
-  of `assets`)
-* Javascript and Coffeescript should live in `app/assets/js/`
+* Your site's HTML files should live in `app/assets/pages/` with `.html`
+  extensions.
+  * These files will be parsed with Handlebars.
+  * You can include a YAML block (in between two lines of `---`) at the top of
+    the file with frontmatter. The data provided here will be available in the
+    file and in the file's template.
+* Partials should live in `app/assets/partials/` with `.hbp` extensions.
+  * You can use partials in your HTML files and in your templates in standard
+    Handlebars fashion ( `{{> my-partial-name}}` ).
+    * If you want to use a partial that is deeply nested, you don't need to
+      specify the path - just use the partial's name.
+* Templates should live in `app/assets/templates/` with `.hbt` extensions.
+  * `default.hbt` is the default template and needs to exist, otherwise you're
+    gonna have a bad time.
+  * You can change the template that a given `.html` file uses by specifying
+    `template: some-template-name` in the file's frontmatter.
+  * Use `{{{body}}}` in your templates where the HTML should be rendered.
+* Javascript and Coffeescript should live in `app/assets/js/`.
   * Javascript files should have a `.js` extension and Coffeescript files should
-    have a `.coffee` extension
-* SASS should live in `app/assets/stylesheets/`
+    have a `.coffee` extension.
+* SASS should live in `app/assets/stylesheets/`.
   * The only SASS file that will be compiled is
     `app/assets/stylesheets/main.scss`. This file should be used to import the
     rest of your SASS.
@@ -59,10 +78,13 @@ like this:
   and `files` (all in `app/assets`), respectively. These files will be copied
   1:1 without any additional processing.
 
-By default, your site will be built 1:1 with the `app` directory, so you can
-reference assets in your site like: `/assets/images/spuds.png`.
+When your site is staged or built, the `assets` directory will be placed in the
+root of the destination directory, alongside the rendered contents of the
+`pages` directory. For example, `app/pages/index.html` will end up as
+`/index.html`, and you can reference assets in your site like:
+`/assets/images/spuds.png`.
 
-### Grunt tasks
+### Grunt tasks - staging, building, cleaning
 
 The entirety of the Starch toolchain is accessible through
 [Grunt](http://gruntjs.com). There are quite a few tasks defined in the
