@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'app',
-          src: ['**/*.html', 'assets/{files,fonts,images}/**/*'],
+          src: 'assets/{files,fonts,images}/**/*',
           dest: 'staging'
         }]
       },
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'app',
-          src: ['**/*.html', 'assets/{files,fonts,images}/**/*'],
+          src: 'assets/{files,fonts,images}/**/*',
           dest: 'public_html'
         }]
       }
@@ -47,6 +47,31 @@ module.exports = function(grunt) {
           hostname: '0.0.0.0',
           port: 8000
         }
+      }
+    },
+    generator: {
+      options: {
+        defaultTemplate: 'default',
+        frontmatterType: 'yaml',
+        partialsGlob: 'app/partials/**/*.hbp',
+        templateExt: 'hbt',
+        templates: 'app/templates'
+      },
+      staging: {
+        files: [{
+          cwd: 'app/pages',
+          src: '**/*.html',
+          dest: 'staging',
+          ext: '.html'
+        }]
+      },
+      build: {
+        files: [{
+          cwd: 'app/pages',
+          src: '**/*.html',
+          dest: 'public_html',
+          ext: '.html'
+        }]
       }
     },
     sass: {
@@ -96,6 +121,11 @@ module.exports = function(grunt) {
         tasks: 'coffee:staging',
         options: { livereload: true }
       },
+      html: {
+        files: 'app/{pages,partials,templates}/**/*',
+        tasks: ['generator:staging'],
+        options: { livereload: true }
+      },
       js: {
         files: 'app/assets/js/**/*.js',
         tasks: ['uglify:staging'],
@@ -107,7 +137,7 @@ module.exports = function(grunt) {
         options: { livereload: true }
       },
       static: {
-        files: ['app/**/*.html', 'app/assets/{files,fonts,images}/**/*'],
+        files: 'app/assets/{files,fonts,images}/**/*',
         tasks: ['copy:staging'],
         options: { livereload: true }
       }
@@ -121,9 +151,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express');
+  grunt.loadNpmTasks('grunt-generator');
 
   grunt.registerTask('serve', ['stage', 'express', 'watch']);
-  grunt.registerTask('stage', ['clean:staging', 'copy:staging', 'sass:staging', 'coffee:staging', 'uglify:staging']);
-  grunt.registerTask('build', ['clean:build', 'copy:build', 'sass:build', 'coffee:build', 'uglify:build']);
+  grunt.registerTask('stage', ['clean:staging', 'generator:staging', 'copy:staging', 'sass:staging', 'coffee:staging', 'uglify:staging']);
+  grunt.registerTask('build', ['clean:build', 'generator:build', 'copy:build', 'sass:build', 'coffee:build', 'uglify:build']);
 };
 

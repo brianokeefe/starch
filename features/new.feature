@@ -11,11 +11,15 @@ Feature: scaffolding a site
       | foo/app/assets/images |
       | foo/app/assets/js |
       | foo/app/assets/stylesheets |
+      | foo/app/pages |
+      | foo/app/partials |
+      | foo/app/templates |
     And the following files should exist:
       | foo/Gruntfile.js |
       | foo/package.json |
       | foo/bower.json |
       | foo/app/assets/stylesheets/main.scss |
+      | foo/app/templates/default.hbt |
     And the file "foo/package.json" should contain:
       """
       "name": "foo",
