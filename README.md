@@ -1,5 +1,6 @@
 # Starch
 [![Gem Version](https://badge.fury.io/rb/starch.svg)](http://badge.fury.io/rb/starch)
+[![Code Climate](https://codeclimate.com/github/brianokeefe/starch.png)](https://codeclimate.com/github/brianokeefe/starch)
 
 Starch is an opinionated skeleton generator for basic static site development.
 It will get you going on new sites quickly by generating the meat and *potatoes*
