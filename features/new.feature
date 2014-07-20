@@ -19,6 +19,7 @@ Feature: scaffolding a site
       | foo/package.json |
       | foo/bower.json |
       | foo/app/assets/stylesheets/main.scss |
+      | foo/app/helpers.js |
       | foo/app/templates/default.hbt |
     And the file "foo/package.json" should contain:
       """

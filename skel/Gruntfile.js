@@ -53,6 +53,7 @@ module.exports = function(grunt) {
       options: {
         defaultTemplate: 'default',
         frontmatterType: 'yaml',
+        helpers: require('./app/helpers.js'),
         partialsGlob: 'app/partials/**/*.hbp',
         templateExt: 'hbt',
         templates: 'app/templates'
@@ -122,7 +123,7 @@ module.exports = function(grunt) {
         options: { livereload: true }
       },
       html: {
-        files: 'app/{pages,partials,templates}/**/*',
+        files: ['app/{pages,partials,templates}/**/*', 'app/helpers.js'],
         tasks: ['generator:staging'],
         options: { livereload: true }
       },
