@@ -9,7 +9,7 @@ of your toolchain. Starch gets you:
 * A simple directory structure
 * Barebones `bower.json` and `package.json` files for easily saving bower and
   npm dependencies
-* Templates and partials via Handlebars
+* Templates, partials, and helpers via Handlebars
 * SASS compilation
 * JS uglification
 * Coffeescript compilation
@@ -42,6 +42,7 @@ like this:
     │   │   ├── js
     │   │   └── stylesheets
     │   │       └── main.scss
+    │   ├── helpers.js
     │   ├── pages
     │   ├── partials
     │   └── templates
@@ -68,6 +69,8 @@ like this:
   * You can change the template that a given `.html` file uses by specifying
     `template: some-template-name` in the file's frontmatter.
   * Use `{{{body}}}` in your templates where the HTML should be rendered.
+* Any Handlebars helpers can live in `app/helpers.js`. In the exported object,
+  each key/value pair should resemble `helperName: function(value) { ... }`.
 * Javascript and Coffeescript should live in `app/assets/js/`.
   * Javascript files should have a `.js` extension and Coffeescript files should
     have a `.coffee` extension.
