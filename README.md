@@ -57,7 +57,7 @@ like this:
   * These files will be parsed with Handlebars.
   * You can include a YAML block (in between two lines of `---`) at the top of
     the file with frontmatter. The data provided here will be available in the
-    file and in the file's template.
+    file and in the file's template, via the `page` object.
 * Partials should live in `app/assets/partials/` with `.hbp` extensions.
   * You can use partials in your HTML files and in your templates in standard
     Handlebars fashion ( `{{> my-partial-name}}` ).
