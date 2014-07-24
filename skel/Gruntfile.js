@@ -1,23 +1,27 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    config: {
+      stagingDir: 'staging',
+      buildDir: 'public_html'
+    },
     clean: {
-      staging: ['staging'],
-      build: ['public_html']
+      staging: ['<%= config.stagingDir %>'],
+      build: ['<%= config.buildDir %>']
     },
     coffee: {
       staging: {
         expand: true,
         cwd: 'app',
         src: 'assets/js/**/*.coffee',
-        dest: 'staging',
+        dest: '<%= config.stagingDir %>',
         ext: '.js'
       },
       build: {
         expand: true,
         cwd: 'app',
         src: 'assets/js/**/*.coffee',
-        dest: 'public_html',
+        dest: '<%= config.buildDir %>',
         ext: '.js'
       }
     },
@@ -27,7 +31,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'app',
           src: 'assets/{files,fonts,images}/**/*',
-          dest: 'staging'
+          dest: '<%= config.stagingDir %>'
         }]
       },
       build: {
@@ -35,7 +39,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'app',
           src: 'assets/{files,fonts,images}/**/*',
-          dest: 'public_html'
+          dest: '<%= config.buildDir %>'
         }]
       }
     },
@@ -62,7 +66,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'app/pages',
           src: '**/*.html',
-          dest: 'staging',
+          dest: '<%= config.stagingDir %>',
           ext: '.html'
         }]
       },
@@ -70,7 +74,7 @@ module.exports = function(grunt) {
         files: [{
           cwd: 'app/pages',
           src: '**/*.html',
-          dest: 'public_html',
+          dest: '<%= config.buildDir %>',
           ext: '.html'
         }]
       }
@@ -104,7 +108,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'app',
           src: 'assets/js/**/*.js',
-          dest: 'staging'
+          dest: '<%= config.stagingDir %>'
         }]
       },
       build: {
@@ -112,7 +116,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'app',
           src: 'assets/js/**/*.js',
-          dest: 'public_html'
+          dest: '<%= config.buildDir %>'
         }]
       }
     },
