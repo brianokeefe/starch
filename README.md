@@ -11,6 +11,7 @@ of your toolchain. Starch gets you:
 * Barebones `bower.json` and `package.json` files for easily saving bower and
   npm dependencies
 * Templates, partials, and helpers via Handlebars
+* PNG, JPG, and GIF optimization
 * SASS compilation
 * JS uglification
 * Coffeescript compilation
@@ -79,9 +80,11 @@ like this:
   * The only SASS file that will be compiled is
     `app/assets/stylesheets/main.scss`. This file should be used to import the
     rest of your SASS.
-* Images, fonts, and any other static assets should live in `images`, `fonts`,
-  and `files` (all in `app/assets`), respectively. These files will be copied
-  1:1 without any additional processing.
+* Images in `app/assets/images/` with `.png`, `.jpg`, or `.gif` extensions will
+  be optimized and copied 1:1 into the destination directory.
+* Fonts, and any other static assets should live in `fonts` and `files`
+  (located in `app/assets`), respectively. These files will be copied 1:1
+  without any additional processing.
 
 When your site is staged or built, the `assets` directory will be placed in the
 root of the destination directory, alongside the rendered contents of the
