@@ -6,6 +6,8 @@ module Starch
 
     attr_accessor :name
 
+    map ['-v', '--version'] => :version
+
     # gem root relative to here
     source_root File.expand_path File.join(__FILE__, '..', '..', '..')
 
@@ -21,6 +23,11 @@ module Starch
       system "cd #{name}; npm install"
 
       say "#{name} created", :green
+    end
+
+    desc 'version', 'Show version'
+    def version
+      say Starch::VERSION
     end
   end
 end
